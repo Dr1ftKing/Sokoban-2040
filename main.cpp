@@ -9,23 +9,12 @@ int main(int argc, char* argv[]) {
           << std::endl;
         exit(-1);
     }
-    int _inputXPlane;
-    int _inputYPlane;
-    std::cin >> _inputXPlane;
-    std::cin >> _inputYPlane;
+    SokobanMap levelLayout;
+    std::cin >> levelLayout;
 
-    int _windowX = (_inputXPlane*100)/3;
-    int _windowY = (_inputYPlane*100)/3;
+    int _windowX = (levelLayout.getColumn()*100)/3;
+    int _windowY = (levelLayout.getRow()*100)/3;
 
-    Sokoban Sokoban;
-    try {
-        //  Sokoban = Sokoban("nbody/starfield.jpg");
-        std::cin >> Sokoban;
-    }
-    catch (std::invalid_argument& err) {
-        std::cout << err.what() << std::endl;
-        exit(-1);
-    }
 
     sf::RenderWindow window(sf::VideoMode\
     (_windowX, _windowY), "Sokoban");

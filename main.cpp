@@ -9,30 +9,23 @@ int main(int argc, char* argv[]) {
           << std::endl;
         exit(-1);
     }
-    int _inputXPlane;
-    int _inputYPlane;
-    std::cin >> _inputXPlane;
-    std::cin >> _inputYPlane;
-
-    int _windowX = (_inputXPlane*100)/3;
-    int _windowY = (_inputYPlane*100)/3;
-
-    Sokoban Sokoban;
+    SokobanMap levelLayout;
     try {
-        //  Sokoban = Sokoban("nbody/starfield.jpg");
-        std::cin >> Sokoban;
+        std::cin >> levelLayout;
     }
-    catch (std::invalid_argument& err) {
-        std::cout << err.what() << std::endl;
+    catch(std::invalid_argument& err) {
+        std::cout << err.what()<<std::endl;
         exit(-1);
     }
+
+    int _windowX = (levelLayout.getColumn()*100)/3;
+    int _windowY = (levelLayout.getRow()*100)/3;
+
 
     sf::RenderWindow window(sf::VideoMode\
     (_windowX, _windowY), "Sokoban");
     window.setFramerateLimit(60);
 
-    // get Sokoban data from file input
-    // std::cin >> Sokoban;
 
 // SFML display loop
     while (window.isOpen()) {
